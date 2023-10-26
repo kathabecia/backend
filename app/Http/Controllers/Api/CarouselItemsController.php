@@ -36,10 +36,10 @@ class CarouselItemsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(request $rq)
+    public function show(request $id)
     {
         // return $rq;
-        return CarouselItems::findOrFail($rq->id);
+        return CarouselItems::findOrFail($id);
     }
 
 
