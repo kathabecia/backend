@@ -57,14 +57,38 @@ class UserController extends Controller
     {
         //
     }
+    /**
+     * Update the update specified resource in storage.
+     */
+    public function update(UserRequest $request, string $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validated();
+ 
+        $user->name = $validated['name'];
+ 
+        $user->save();
+
+        return $user;
+    }
 
     /**
-     * Update the specified resource in storage.
+     * Update the email of the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function email(UserRequest $request, string $id)
     {
         //
     }
+
+    /**
+     * Update the email of the  specified resource in storage.
+     */
+    public function password(UserRequest $request, string $id)
+    {
+        //
+    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -74,7 +98,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
- 
+
         return $user;
     }
 

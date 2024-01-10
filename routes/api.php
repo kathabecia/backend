@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CarouselItemsController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\MessageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +30,17 @@ Route::put('/carousel/{id}', [CarouselItemsController::class, 'update']);
 Route::delete('/carousel/{id}', [CarouselItemsController::class, 'destroy']);
 
 Route::get('/user', [UserController::class, 'index']);
-Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+//user
 Route::get('/user/{id}', [UserController::class, 'show']);
-Route::post('/user', [UserController::class, 'store']);
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::put('/user/email{id}', [UserController::class, 'email'])->name('user.email');
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+//message
+Route::get('/message', [MessageController::class, 'index']);
+Route::get('/message/{id}', [MessageController::class, 'show']);
+Route::post('/message', [MessageController::class, 'store']);
+Route::put('/message/{id}', [MessageController::class, 'update']);
+Route::delete('/message/{id}', [MessageController::class, 'destroy']);

@@ -61,13 +61,13 @@ class CarouselItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public  function destroy(string $id)
     {
         //
         $carouselItem = CarouselItems::findOrFail($id);
 
         $carouselItem->delete();
  
-        return $carouselItem->delete();
+        return $carouselItem;
     }
 }
